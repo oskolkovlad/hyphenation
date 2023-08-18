@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\AlgorithmType.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="HyphenationProvider.cs" />
     <Compile Include="HyphenationProviderCreator.cs" />
     <Compile Include="Interfaces\IHyphenationProvider.cs" />
