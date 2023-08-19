@@ -3,7 +3,8 @@
     using Hyphenation.Library.Enums;
     using Interfaces;
 
-    internal class ChristsStrategy : IHyphenationStrategy
+    internal class ChristsStrategy : BaseStrategy,
+        IHyphenationStrategy
     {
         #region IHyphenationStrategy Members
 

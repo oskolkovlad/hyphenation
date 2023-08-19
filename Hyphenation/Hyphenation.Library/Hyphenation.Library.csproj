@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\AlgorithmType.cs" />
+    <Compile Include="Enums\Language.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="HyphenationProvider.cs" />
     <Compile Include="HyphenationProviderCreator.cs" />
@@ -49,6 +50,10 @@
     <Compile Include="Interfaces\IHyphenationStrategy.cs" />
     <Compile Include="Interfaces\IHyphenationProviderCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\EnglishLanguageSettings.cs" />
+    <Compile Include="Settings\LanguageSettings.cs" />
+    <Compile Include="Settings\RussianLanguageSettings.cs" />
+    <Compile Include="Strategies\BaseStrategy.cs" />
     <Compile Include="Strategies\ChristsStrategy.cs" />
     <Compile Include="Strategies\LiangKnuthStrategy.cs" />
   </ItemGroup>

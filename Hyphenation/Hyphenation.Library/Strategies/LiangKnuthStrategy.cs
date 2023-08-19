@@ -3,7 +3,8 @@
     using Hyphenation.Library.Enums;
     using Interfaces;
 
-    internal class LiangKnuthStrategy : IHyphenationStrategy
+    internal class LiangKnuthStrategy : BaseStrategy,
+        IHyphenationStrategy
     {
         #region IHyphenationStrategy Members
 
