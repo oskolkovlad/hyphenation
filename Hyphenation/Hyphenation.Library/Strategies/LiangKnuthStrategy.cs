@@ -1,8 +1,8 @@
 ﻿namespace Hyphenation.Library.Strategies
 {
-    using Hyphenation.Library.Enums;
-    using Hyphenation.Library.Settings;
-    using Interfaces;
+    using Enums;
+    using Interfaces.Strategies;
+    using Settings;
 
     /// <summary>
     /// Класс, реализующий алгоритм расстановки переносов в словах (алгоритм Ляна-Кнута).
@@ -26,12 +26,22 @@
 
         #region IHyphenationStrategy Members
 
+        /// <summary>
+        /// Тип алгоритма для вставки переносов.
+        /// </summary>
         public override AlgorithmType Type => AlgorithmType.LiangKnuth;
 
         #endregion IHyphenationStrategy Members
 
         #region Protected Members
 
+        /// <summary>
+        /// Расстановка переносов в исходном слове.
+        /// </summary>
+        /// <param name="sourceWord">Исходное слово.</param>
+        /// <param name="hyphenSymbol">Символ переноса.</param>
+        /// <param name="settings">Настройки языка с правилами/шаблонами переноса.</param>
+        /// <returns>Целевое слово с расставленными переносами.</returns>
         protected override string PerformInsertHyphensInWord(string sourceWord, string hyphenSymbol, LanguageSettings settings)
         {
             throw new System.NotImplementedException();

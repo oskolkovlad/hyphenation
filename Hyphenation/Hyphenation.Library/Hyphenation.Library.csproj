@@ -41,14 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Creators\HyphenationStrategyCreator.cs" />
     <Compile Include="Enums\AlgorithmType.cs" />
     <Compile Include="Enums\Language.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="HyphenationProvider.cs" />
-    <Compile Include="HyphenationProviderCreator.cs" />
+    <Compile Include="Creators\HyphenationProviderCreator.cs" />
+    <Compile Include="Interfaces\Creators\IHyphenationStrategyCreator.cs" />
     <Compile Include="Interfaces\IHyphenationProvider.cs" />
-    <Compile Include="Interfaces\IHyphenationStrategy.cs" />
-    <Compile Include="Interfaces\IHyphenationProviderCreator.cs" />
+    <Compile Include="Interfaces\Strategies\IHyphenationStrategy.cs" />
+    <Compile Include="Interfaces\Creators\IHyphenationProviderCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

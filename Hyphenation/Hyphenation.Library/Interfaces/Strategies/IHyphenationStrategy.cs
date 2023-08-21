@@ -1,4 +1,4 @@
-﻿namespace Hyphenation.Library.Interfaces
+﻿namespace Hyphenation.Library.Interfaces.Strategies
 {
     using Enums;
 
