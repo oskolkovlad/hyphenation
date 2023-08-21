@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Enums;
+    using Properties;
 
     internal sealed class EnglishLanguageSettings : LanguageSettings
     {
@@ -68,9 +69,9 @@
 
         public override int MinRightHyphenLettersCount => CurrentMinRightHyphenLettersCount;
 
-        public override string ExceptionsFile => string.Empty;/*Resources.hyph_en_us_hyp;*/ // TODO: add exceptions file to Resources.
+        public override string ExceptionsFile => Resources.hyph_en_us_hyp;
 
-        public override string PatternsFile => string.Empty;/*Resources.hyph_en_us_pat;*/   // TODO: add patterns file to Resources.
+        public override string PatternsFile => Resources.hyph_en_us_pat;
 
         public override Language Language => Language.English;
 
