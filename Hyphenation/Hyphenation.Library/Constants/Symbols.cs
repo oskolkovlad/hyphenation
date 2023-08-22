@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Hyphenation.Library.Constants
+﻿namespace Hyphenation.Library.Constants
 {
+    using System.Collections.Generic;
+
     internal static class Symbols
     {
         public const string CommentSymbol = "%";
