@@ -3,43 +3,18 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
+    using Constants;
     using Enums;
     using Extensions;
     using Settings;
 
     internal abstract class BaseStrategy
     {
-        protected const char HyphenSymbol = '-';
-
-        /// <summary>
-        /// Символ мягкого переноса.
-        /// </summary>
-        protected static readonly char SoftHyphenSymbol = (char)173;
-
         private const int MinAbbreviationOrReductionUpperCharCount = 2;
         private const string InputPattern = @"^{0}(?=\W+)|(?<=\W+){0}(?=\W+)|(?<=\W+){0}$|^{0}$";
 
-        private static readonly char[] TextSeparators =
-            { ',', '.', ':', ';', '"', '/', '[', ']', '(', ')', '<', '>', '|', '?', '!', '@', '#', '&', '%', '+', '^', '$', '*' };
-        private static readonly char[] WordSymbols = { '\'', '`', HyphenSymbol };
-
         private static readonly IDictionary<string, string> WordsWithHyphens = new Dictionary<string, string>();
-        private static readonly IReadOnlyDictionary<string, string> EscapeSymbols = new Dictionary<string, string>
-        {
-            { @"\", @"\\" },
-            { "^", @"\^" },
-            { "$", @"\$" },
-            { ".", @"\." },
-            { "+", @"\+" },
-            { "*", @"\*" },
-            { "?", @"\?" },
-            { "[", @"\[" },
-            { "]", @"\]" },
-            { "(", @"\(" },
-            { ")", @"\)" },
-            { "|", @"\|" },
-        };
-
+        
         private readonly LanguageSettings[] _settingsArray;
 
         protected BaseStrategy(LanguageSettings[] settingsArray)
@@ -69,7 +44,7 @@
 
             if (hyphenSymbol.IsNullOrEmpty())
             {
-                hyphenSymbol = SoftHyphenSymbol.ToString();
+                hyphenSymbol = Symbols.SoftHyphenSymbol.ToString();
             }
 
             var targetText = sourceText;
@@ -123,12 +98,12 @@
             targetWord = sourceWord;
 
             var sourceCharacters = sourceWord.ToCharArray();
-            if (!sourceCharacters.Intersect(WordSymbols).Any())
+            if (!sourceCharacters.Intersect(Symbols.WordSymbols).Any())
             {
                 return false;
             }
 
-            if (!sourceCharacters.Contains(HyphenSymbol))
+            if (!sourceCharacters.Contains(Symbols.HyphenSymbol))
             {
                 return true;
             }
@@ -136,7 +111,7 @@
             var count = default(int);
             foreach (var character in sourceCharacters)
             {
-                if (character == HyphenSymbol)
+                if (character == Symbols.HyphenSymbol)
                 {
                     targetWord = targetWord.Insert(count, hyphenSymbol);
                     count++;
@@ -181,7 +156,7 @@
         {
             return !sourceText.IsNullOrEmpty() ?
                 sourceText
-                    .Split(TextSeparators)
+                    .Split(Symbols.TextSeparators)
                     .Select(word => word.Trim())
                     .Where(word => !word.IsNullOrEmpty())
                     .Distinct() :
@@ -202,7 +177,7 @@
                 return sourceWord;
             }
 
-            var trimmedSourceWord = sourceWord.Trim(TextSeparators).Trim();
+            var trimmedSourceWord = sourceWord.Trim(Symbols.TextSeparators).Trim();
             if (WordsWithHyphens.ContainsKey(trimmedSourceWord))
             {
                 return WordsWithHyphens[trimmedSourceWord];
@@ -214,7 +189,7 @@
             // проверяем на наличие символа мягкого переноса,
             // игнорируем аббревиатуры и сокращения.
             if (trimmedSourceWord.Length < settings.MinLettersCount ||
-                sourceCharacters.Contains(SoftHyphenSymbol) ||
+                sourceCharacters.Contains(Symbols.SoftHyphenSymbol) ||
                 IsAbbreviationOrReduction(sourceWord))
             {
                 return sourceWord;
@@ -284,11 +259,11 @@
         /// <returns>Отформатированное исходное слово.</returns>
         private string PrepareSourceWordForRegularExpression(string sourceWord)
         {
-            foreach (var symbol in EscapeSymbols.Keys)
+            foreach (var symbol in Symbols.EscapeSymbols.Keys)
             {
                 if (sourceWord.Contains(symbol))
                 {
-                    sourceWord = sourceWord.Replace(symbol, EscapeSymbols[symbol]);
+                    sourceWord = sourceWord.Replace(symbol, Symbols.EscapeSymbols[symbol]);
                 }
             }
 

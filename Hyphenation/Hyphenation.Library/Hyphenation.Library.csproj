@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\Symbols.cs" />
     <Compile Include="Creators\HyphenationStrategyCreator.cs" />
     <Compile Include="Enums\AlgorithmType.cs" />
     <Compile Include="Enums\Language.cs" />
@@ -58,7 +59,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings\EnglishLanguageSettings.cs" />
+    <Compile Include="Settings\Patterns\ExceptionPattern.cs" />
+    <Compile Include="Settings\Patterns\LanguagePatterns.cs" />
     <Compile Include="Settings\LanguageSettings.cs" />
+    <Compile Include="Settings\Patterns\Pattern.cs" />
     <Compile Include="Settings\RussianLanguageSettings.cs" />
     <Compile Include="Strategies\BaseStrategy.cs" />
     <Compile Include="Strategies\ChristsStrategy.cs" />
